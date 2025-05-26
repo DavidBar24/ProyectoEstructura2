@@ -13,7 +13,7 @@ const CalendarioCitas = () => {
 
   const cargarCitas = async () => {
     try {
-      const res = await fetch("http://localhost:5006/api/citas");
+      const res = await fetch("https://avancesestructuras-production-1eb1.up.railway.app/api/citas");
       if (!res.ok) throw new Error("Error al cargar citas");
       const data = await res.json();
       setCitas(data);
@@ -46,7 +46,7 @@ const CalendarioCitas = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5006/api/agendar-cita-calendario", {
+      const response = await fetch("avancesestructuras-production-1eb1.up.railway.app/api/agendar-cita-calendario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevaCita),

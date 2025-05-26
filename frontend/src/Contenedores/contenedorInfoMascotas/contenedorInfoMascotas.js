@@ -10,7 +10,7 @@ const ContenedorInfoMascotas = () => {
   useEffect(() => {
     const obtenerMascotas = async () => {
       try {
-        const respuesta = await fetch(`http://localhost:5006/api/mascotas/${idUsuario}`);
+        const respuesta = await fetch(`https://avancesestructuras-production-1eb1.up.railway.app/api/mascotas/${idUsuario}`);
         const datos = await respuesta.json();
         setMascotas(datos.mascotas || []);
       } catch (error) {
