@@ -19,7 +19,7 @@ const rutas = require('./rutas'); // Importamos las rutas
 app.use('/api', rutas); // Prefijo para las rutas
 
 
-const PORT  = process.env.PORT || 8080;
+const PORT  = process.env.PORT || 5006;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
