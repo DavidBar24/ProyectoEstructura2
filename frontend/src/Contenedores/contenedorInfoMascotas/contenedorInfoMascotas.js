@@ -1,6 +1,4 @@
-
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import InfoMascotas from '../../Componentes/infoMascotas/infoMascotas';
 
 const ContenedorInfoMascotas = () => {
