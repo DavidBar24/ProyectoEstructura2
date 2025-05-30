@@ -382,10 +382,10 @@ router.get('/mascotas/:idUsuario', (req, res) => {
       v.fecha_proxima_vacunacion,
       d.fecha_ultima_desparasitacion,
       d.fecha_proxima_desparasitacion
-    FROM mascotas m
-    LEFT JOIN vacunacion v ON m.id = v.id_mascota
-    LEFT JOIN desparasitacion d ON m.id = d.id_mascota
-    WHERE m.id_cliente = ?
+      FROM mascotas m
+      LEFT JOIN vacunacion v ON m.id = v.id_mascota
+      LEFT JOIN desparasitacion d ON m.id = d.id_mascota
+      WHERE m.id_cliente = ?
   `;
 
   db.query(query, [idUsuario], (err, resultados) => {
@@ -397,8 +397,7 @@ router.get('/mascotas/:idUsuario', (req, res) => {
     res.json({
       mascotas: resultados,
       mensaje: resultados.length === 0 ? 'No hay mascotas registradas' : ''
-    });
-  });
+    });
+  });
 });
-
 module.exports = router;
