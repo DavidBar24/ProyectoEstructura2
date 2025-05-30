@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import DesparaYVacunaComponent from "../../Componentes/DesparaYVacuna/UnificacionDespaYVacuna";
 import "../../Styles/estiloDeVa.css";
 
@@ -25,25 +26,19 @@ const ContenedorDesparaYVacuna = () => {
     const obtenerMascotas = async () => {
       setLoading(true);
       setError("");
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        setError("Sesión expirada. Inicia sesión nuevamente.");
-        setLoading(false);
-        return;
-      }
 
       try {
-        const res = await fetch(`${API_BASE}/mis-mascotas/${idUsuario}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        if (!res.ok) throw new Error(`Status: ${res.status}`);
+        // Llamada al endpoint público /mascotas/:idUsuario
+        const res = await fetch(`${API_BASE}/mascotas/${idUsuario}`);
+        if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
 
         const data = await res.json();
-        const arr = Array.isArray(data) ? data : [];
+        // data.mascotas contiene el array de mascotas
+        const arr = data.mascotas || [];
+        // Ordenamos por próxima vacunación o desparasitación
         arr.sort((a, b) => {
-          const nextA = toDate(a.nuevo_dia_vacunacion) || toDate(a.nuevo_dia_desparasitar);
-          const nextB = toDate(b.nuevo_dia_vacunacion) || toDate(b.nuevo_dia_desparasitar);
+          const nextA = toDate(a.fecha_proxima_vacunacion) || toDate(a.fecha_proxima_desparasitacion);
+          const nextB = toDate(b.fecha_proxima_vacunacion) || toDate(b.fecha_proxima_desparasitacion);
           if (!nextA) return 1;
           if (!nextB) return -1;
           return nextA - nextB;
@@ -51,7 +46,7 @@ const ContenedorDesparaYVacuna = () => {
 
         setMascotas(arr);
       } catch (err) {
-        console.error(err);
+        console.error('Error al cargar mascotas:', err);
         setError("Error al cargar mascotas.");
         setMascotas([]);
       } finally {
@@ -60,7 +55,7 @@ const ContenedorDesparaYVacuna = () => {
     };
 
     obtenerMascotas();
-  }, []);
+  }, [idUsuario]);
 
   const agendarCita = async (tipo) => {
     const token = localStorage.getItem("token");
@@ -99,7 +94,7 @@ const ContenedorDesparaYVacuna = () => {
         body.fechaDesparasitacionAnterior = desparasitadoAnterior === "si" ? fechaDesparasitacionAnterior : null;
       }
 
-      const res = await fetch(`${API_BASE}/agendar-cita/${idUsuario}`, {
+      const res = await fetch(`${API_BASE}/agendar-cita`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
