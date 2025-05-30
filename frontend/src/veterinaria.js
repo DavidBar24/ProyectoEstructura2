@@ -15,7 +15,6 @@ const VetButton = ({ children, link }) => (
 );
 
 const Veterinaria = () => {
-  const idUsuario = localStorage.getItem('idUsuario');
   const token = localStorage.getItem("token");
 
   return (
