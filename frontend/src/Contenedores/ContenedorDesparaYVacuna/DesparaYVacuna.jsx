@@ -5,6 +5,7 @@ import "../../Styles/estiloDeVa.css";
 const API_BASE = "https://avancesestructuras-production-1eb1.up.railway.app/api";
 
 const ContenedorDesparaYVacuna = () => {
+  const { idUsuario } = useParams();
   const [mascotas, setMascotas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,7 +34,7 @@ const ContenedorDesparaYVacuna = () => {
       }
 
       try {
-        const res = await fetch(`${API_BASE}/mis-mascotas`, {
+        const res = await fetch(`${API_BASE}/mis-mascotas/${idUsuario}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) throw new Error(`Status: ${res.status}`);
@@ -98,7 +99,7 @@ const ContenedorDesparaYVacuna = () => {
         body.fechaDesparasitacionAnterior = desparasitadoAnterior === "si" ? fechaDesparasitacionAnterior : null;
       }
 
-      const res = await fetch(`${API_BASE}/agendar-cita`, {
+      const res = await fetch(`${API_BASE}/agendar-cita/${idUsuario}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
