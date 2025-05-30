@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const db = require('./bd');
 
 
@@ -15,7 +15,7 @@ router.post('/registro', async (req, res) => {
   const { nombre, edad, contrasena } = req.body;
   
   try {
-    const contrasenaEncriptada = await require('bcrypt').hash(contrasena, 10);
+    const contrasenaEncriptada = await require('bcryptjs').hash(contrasena, 10);
     
     db.query(
       'INSERT INTO clientes (nombre, edad, password) VALUES (?, ?, ?)',
@@ -70,7 +70,7 @@ router.post('/inicio-sesion', async (req, res) => {
         return res.status(401).json({ error: 'Credenciales inválidas' });
       }
       const usuario = filas[0];
-      const contrasenaValida = await require('bcrypt').compare(contrasena, usuario.password);
+      const contrasenaValida = await require('bcryptjs').compare(contrasena, usuario.password);
       if (!contrasenaValida) {
         return res.status(401).json({ error: 'Credenciales inválidas' });
       }
