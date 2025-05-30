@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+// Anti-patron Clase God
+
+
+/*import { useEffect, useState } from "react";
 import "../Styles/estiloDeVa.css";
 
 const vacunasPredefinidas = [
@@ -40,7 +43,7 @@ const DesparaYVacuna = () => {
     const obtenerMascotas = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await fetch("https://avancesestructuras-production-1eb1.up.railway.app/api/mis-mascotas", {
+        const response = await fetch("http://localhost:5006/api/mis-mascotas", {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await response.json();
@@ -96,7 +99,7 @@ const DesparaYVacuna = () => {
           : null;
       }
 
-      const response = await fetch("https://avancesestructuras-production-1eb1.up.railway.app/api/agendar-cita", {
+      const response = await fetch("http://localhost:5006/api/agendar-cita", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -291,4 +294,4 @@ const DesparaYVacuna = () => {
   );
 };
 
-export default DesparaYVacuna;
+export default DesparaYVacuna; */

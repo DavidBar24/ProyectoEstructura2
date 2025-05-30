@@ -1,4 +1,5 @@
 import { Calendar, Star } from "lucide-react";
+import DecoratorPeluqueria from "../../PatronesDiseño/DecoratorPeluqueria"
 
 const TarjetaCorte = ({ corte }) => (
   <article className={`tarjeta ${corte.destacado ? 'destacada' : ''}`}>
@@ -8,28 +9,9 @@ const TarjetaCorte = ({ corte }) => (
     <p>${corte.precio}</p>
     <button className="btn-agendar">
       <Calendar size={18}/>
-      Agendar
+      <DecoratorPeluqueria corte={corte} />
     </button>
   </article>
 );
 
 export default TarjetaCorte;
-
-/*
-lista-cortes
-filas-container
-cabeceracabecera
-fila-cortes
-badge
-btn-agendar
-pagina-peluqueria
-selector-tipo"
-
-btn-tipo
-
-seccion-principal
-
-
-
-
-*/
