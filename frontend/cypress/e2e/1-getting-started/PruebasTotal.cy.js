@@ -19,13 +19,10 @@ describe('Registro, Login y Registro de Mascota - Veterinaria', () => {
     });
 
         it('2. Registro de usuario y conservación de token', () => {
-          // 1) Vamos directo a la ruta de registro
           cy.visit(`${baseUrl}/register`);
 
-          // 2) Comprobamos que se muestra el encabezado
           cy.contains('h2', 'Registro').should('be.visible');
 
-          // 3) Rellenamos campos con timeout extra por si tarda en renderizar
           cy.get('input[placeholder="Nombre"]', { timeout: 8000 })
             .should('be.visible')
             .type('usuarioTest');
@@ -38,10 +35,8 @@ describe('Registro, Login y Registro de Mascota - Veterinaria', () => {
             .should('be.visible')
             .type('passTest123');
 
-          // 4) Enviamos
           cy.get('button[type="submit"]').click();
 
-          // 5) Verificamos token
           cy.window().its('localStorage.token').should('exist');
         });
 
@@ -92,7 +87,6 @@ describe('Registro, Login y Registro de Mascota - Veterinaria', () => {
 
         cy.contains('Resumen de tu Perfil:').should('be.visible');
         cy.contains('Costo Total: $0/mes').should('be.visible');
-
 
         cy.visit(`${baseUrl}/veterinaria`);
         cy.url().should('eq', `${baseUrl}/veterinaria`);

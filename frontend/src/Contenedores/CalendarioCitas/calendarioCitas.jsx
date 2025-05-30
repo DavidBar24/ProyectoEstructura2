@@ -7,10 +7,10 @@ import "../../Componentes/Calendario/calendario.css";
 const CalendarioCitas = () => {
     const [citas, setCitas] = useState([]);
     const [nuevaCita, setNuevaCita] = useState({
-        fechaHora: "",
+        fecha_hora: "",
         motivo: "",
-        idCliente: "",
-        idMascota: "",
+        id_cliente: "",
+        id_mascota: "",
     });
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const CalendarioCitas = () => {
     const handleDateClick = (info) => {
         const clickedDate = new Date(info.date);
         const localISOTime = clickedDate.toISOString().slice(0, 16);
-        setNuevaCita({ ...nuevaCita, fechaHora: localISOTime });
+        setNuevaCita({ ...nuevaCita, fecha_hora: localISOTime });
     };
 
     const handleInputChange = (e) => {
@@ -51,8 +51,8 @@ const CalendarioCitas = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...nuevaCita,
-                    idCliente: parseInt(nuevaCita.idCliente),
-                    idMascota: parseInt(nuevaCita.idMascota)
+                    id_cliente: parseInt(nuevaCita.id_cliente),
+                    id_mascota: parseInt(nuevaCita.id_mascota)
                 }),
             });
 
@@ -61,10 +61,10 @@ const CalendarioCitas = () => {
             if (response.ok) {
                 await cargarCitas();
                 setNuevaCita({ 
-                    fechaHora: "", 
+                    fecha_hora: "", 
                     motivo: "", 
-                    idCliente: "", 
-                    idMascota: "" 
+                    id_cliente: "", 
+                    id_mascota: "" 
                 });
                 alert("Cita agendada con éxito! 🐾");
             } else {
