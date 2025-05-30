@@ -39,7 +39,7 @@ const Veterinaria = () => {
           <div className="vet-services">
             <VetButton link="/desparasitacion-vacunacion">Vacunación y desparasitación</VetButton>
             <VetButton link="/peluqueria-estetica">Peluquería y estética canina y felina</VetButton>
-            <VetButton link={`/mascotas-usuario/${idUsuario}`}>Información de tu mascota</VetButton>
+            <VetButton link="/mascotas-usuario">Información de tu mascota</VetButton>
             <VetButton link="/Registrar-Mascota">Registrar Mascota</VetButton>
             <VetButton link="/galeria">Galería Mascota</VetButton>
             <VetButton link= "/Calculadora">Alimentacion de tu Mascota</VetButton>

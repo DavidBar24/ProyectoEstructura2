@@ -10,7 +10,7 @@ const InfoMascotas = ({ mascotas }) => {
       ) : (
         <ul className="lista-mascotas">
           {mascotas.map((mascota) => (
-            <li key={mascota.veterinariaid}>
+            <li key={mascota.id_mascota}>
               <div className="campo"><strong>Nombre:</strong> <span>{mascota.nombre}</span></div>
               <div className="campo"><strong>Especie:</strong> <span>{mascota.especie}</span></div>
               <div className="campo"><strong>Raza:</strong> <span>{mascota.raza}</span></div>

@@ -25,7 +25,7 @@ function App() {
         <Route path="/agendar-Cita" element={<CalendarioCitas />} />
         <Route path="/galeria" element={<LinkedListComponent />} />
         <Route path="/Calculadora" element={<FoodCalculatorPage/>} />
-        <Route path="/mascotas-usuario/:idUsuario" element={<ContenedorInfoMascotas />} /> 
+        <Route path="/mascotas-usuario" element={<ContenedorInfoMascotas />} /> 
         <Route path="/treatment-templates" element={<TreatmentTemplatesPage />} />
       <Route path="/crear-perfil" element={<PerfilBuilderPage />} />
       </Routes>
