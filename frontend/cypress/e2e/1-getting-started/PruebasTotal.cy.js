@@ -4,7 +4,7 @@
 // API:  http://localhost:5006 (backend)
 
 describe('Registro, Login y Registro de Mascota - Veterinaria', () => {
-  const baseUrl = 'https//starlit-llama-c6e7ba.netlify.app';
+  const baseUrl = 'https://starlit-llama-c6e7ba.netlify.app';
   const apiUrl = 'https://avancesestructuras-production-1eb1.up.railway.app';
 
   before(() => {
@@ -19,14 +19,30 @@ describe('Registro, Login y Registro de Mascota - Veterinaria', () => {
     });
 
         it('2. Registro de usuario y conservación de token', () => {
-        cy.visit(`${baseUrl}/`);
-        cy.get('a.auth-login__link').click();
+          // 1) Vamos directo a la ruta de registro
+          cy.visit(`${baseUrl}/register`);
 
-        cy.get('input[placeholder="Nombre"]').type('usuarioTest');
-        cy.get('input[placeholder="Edad"]').type('30');
-        cy.get('input[placeholder="Contraseña"]').type('passTest123');
-        cy.get('button[type="submit"]').click();
-        cy.window().its('localStorage.token').should('exist');
+          // 2) Comprobamos que se muestra el encabezado
+          cy.contains('h2', 'Registro').should('be.visible');
+
+          // 3) Rellenamos campos con timeout extra por si tarda en renderizar
+          cy.get('input[placeholder="Nombre"]', { timeout: 8000 })
+            .should('be.visible')
+            .type('usuarioTest');
+
+          cy.get('input[placeholder="Edad"]')
+            .should('be.visible')
+            .type('30');
+
+          cy.get('input[placeholder="Contraseña"]')
+            .should('be.visible')
+            .type('passTest123');
+
+          // 4) Enviamos
+          cy.get('button[type="submit"]').click();
+
+          // 5) Verificamos token
+          cy.window().its('localStorage.token').should('exist');
         });
 
         it('3. Login con el usuario creado', () => {

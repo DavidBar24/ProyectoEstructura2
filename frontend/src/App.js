@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LoginPagina />} />
-        <Route path="/registro" element={<RegistroPagina />} />
+        <Route path="/register" element={<RegistroPagina />} />
         <Route path="/veterinaria" element={<Veterinaria />} />
         <Route path="/Registrar-Mascota" element={<RegistrarMascota/>}/>
         <Route path="/desparasitacion-vacunacion" element={<DesparasitaryVacunar/>}/>
