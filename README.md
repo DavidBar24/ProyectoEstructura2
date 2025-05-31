@@ -5,3 +5,5 @@ Andres Felipe Gonzales Ortegón - 2226012 - Full Stack ( materia: Solo Estructur
 Ruta Backend: https://railway.com/invite/ZAmhzOBDEPq
 
 Ruta Frontend: https://starlit-llama-c6e7ba.netlify.app/
+
+Ruta Figma: https://www.figma.com/design/tX6JDfPZ5ZoqUUPjbkXBIP/Veterinaria-dise%C3%B1o?node-id=0-1&t=uDx7AYN8ULEcVqab-1
