@@ -28,14 +28,11 @@ const ContenedorDesparaYVacuna = () => {
       setError("");
 
       try {
-        // Llamada al endpoint público /mascotas/:idUsuario
         const res = await fetch(`${API_BASE}/mascotas/${idUsuario}`);
         if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
 
         const data = await res.json();
-        // data.mascotas contiene el array de mascotas
         const arr = data.mascotas || [];
-        // Ordenamos por próxima vacunación o desparasitación
         arr.sort((a, b) => {
           const nextA = toDate(a.fecha_proxima_vacunacion) || toDate(a.fecha_proxima_desparasitacion);
           const nextB = toDate(b.fecha_proxima_vacunacion) || toDate(b.fecha_proxima_desparasitacion);

@@ -6,7 +6,7 @@ const db = require('./bd');
 
 
 
-const SECRETO_JWT = 'tu_secreto_super_seguro';
+const { SECRETO_JWT } = require('./confing');
 
 
 
