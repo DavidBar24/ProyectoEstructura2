@@ -26,3 +26,6 @@ Para Estructuras de Datos 2 se usaron estos elementos:
  - Routes
  - Stacks
  - Raiway Login
+ - Uso de Netifly como frontend
+ - Uso de Raiway como backend
+ - Uso de MySQL como base de datos
